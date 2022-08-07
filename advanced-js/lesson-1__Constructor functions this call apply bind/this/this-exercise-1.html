@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- напишите метод caclAverageScore, который будет считать среднюю оценку внутри объекта tabel.
+Оценка – это свойство объекта, имеющее тип «строка», значение которого представляет собой либо целое число (типа Number), либо целое число в виде строки. -->
+
+    <script>
+      const tabel = {
+        qqq: 13,
+        www: 34,
+        eee: "97",
+
+        caclAverageScore: function () {
+          const res = (this.qqq + this.www + +this.eee) / 3;
+          return res;
+        },
+      };
+
+      console.log(tabel.caclAverageScore());
+    </script>
+  </body>
+</html>

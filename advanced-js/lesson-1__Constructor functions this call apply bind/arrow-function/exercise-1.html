@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <button id="click-me">Click me</button>
+    <script>
+      /*
+Напишите объекту btn метод render, который рисует кнопку в переданном
+ DOM-элементе кнопку с текстом, храняющимся в свойстве
+btn.text, и вешает на нее обработчик click, который при клике меняет текст на храняющийся в свойстве secondText
+*/
+
+      const btn = document.querySelector("#click-me");
+
+      const btnHandler = {
+        text: "New text",
+        secondText: "Click text",
+        render: function (target) {
+          target.textContent = this.text;
+        },
+      };
+
+      btnHandler.render(btn);
+
+      btn.addEventListener(
+        "click",
+        (e) => (e.target.textContent = btnHandler.secondText)
+      );
+    </script>
+  </body>
+</html>

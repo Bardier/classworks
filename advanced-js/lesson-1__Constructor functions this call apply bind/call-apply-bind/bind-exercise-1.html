@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      /**
+	 * Напишите для объекта personage методы:
+		- getAvarageScore - считает среднюю оценку из тех, кто есть в свойство tabel, и возвращает ее;
+		- getBestScore - считает лучшую оценку из тех, кто есть в свойство tabel, и возвращает ее и название предмета;
+		- getWorthScore - считает худщую оценку из тех, кто есть в свойство tabel, и возвращает ее и название предмета;
+		Сделайте это максиально изящно, используя новые методы Object и методы массива.
+
+		После чего выведите в консоль результат работы каждого метода с периодичностью в 2 сек.
+	 */
+      const personage = {
+        name: "Тацумаки Смерч Ужаса",
+        tabel: {
+          магия: 12,
+          "презрение к слабым": 11,
+          "сочувствие слабым": 3,
+          "любовь к сестре": 8,
+          "комплекс из-за невысокого роста": 20,
+        },
+
+        getAvarageScore: function () {
+          let count = 0;
+          let res = 0;
+          for (const key in this.tabel) {
+            res += this.tabel[key];
+            count++;
+          }
+
+          return `Avarage score: ${res / count}`;
+        },
+
+        getBestScore: function () {
+          let subject = "";
+          let value = 0;
+          for (const key in this.tabel) {
+            if (this.tabel[key] > value) {
+              subject = key;
+              value = this.tabel[key];
+            }
+          }
+
+          return `The best: ${subject} => ${value}`;
+        },
+
+        getWorthScore: function () {
+          let subject = "";
+          let value = 100;
+          for (const key in this.tabel) {
+            if (this.tabel[key] < value) {
+              subject = key;
+              value = this.tabel[key];
+            }
+          }
+
+          return `The worth: ${subject} => ${value}`;
+        },
+      };
+
+      // ? Не пойму куда в этом задании bind применять
+
+      setTimeout(() => {
+        console.log(personage.getAvarageScore());
+      }, 2000);
+
+      setTimeout(() => {
+        console.log(personage.getBestScore());
+      }, 4000);
+
+      setTimeout(() => {
+        console.log(personage.getWorthScore());
+      }, 6000);
+    </script>
+  </body>
+</html>

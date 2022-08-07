@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      /**
+       * Создайте функцию getAge, которая высчитывает возраст на указанную дату в формате:
+       * "гг.мм.дд" и вызовите ее для каждого объекта
+       * */
+      const user1 = {
+        name: "Отурн",
+        "last name": "ди'Аншвар",
+        birthday: "1245.02.23",
+      };
+
+      const user2 = {
+        name: "Крогар",
+        "last name": "ди'Аншвар",
+        birthday: "1845.05.10",
+      };
+
+      function getAge() {
+        const curentDate = new Date();
+        const date = new Date(this.birthday);
+        const res = Math.floor((curentDate - date) / 1000 / 60 / 60 / 24 / 365);
+        return `${this.name} ${this["last name"]} is ${res} years old.`;
+      }
+
+      console.log(getAge.call(user1));
+      console.log(getAge.call(user2));
+    </script>
+  </body>
+</html>

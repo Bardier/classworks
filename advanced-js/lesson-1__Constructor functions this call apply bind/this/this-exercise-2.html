@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- опишите внутри метода caclAverageScore функцию calcScoreCount, считающую общее число оценок. -->
+    <script>
+      const tabel = {
+        biology: 11,
+        phisic: 8,
+        history: 12,
+        mathematic: 6,
+        sport: "3",
+        magic: 12,
+        name: "Фибуки",
+        "last name": "Кибердемон",
+
+        caclAverageScore: () => {
+          function calcScoreCount() {
+            let res = 0;
+            for (const key in this) {
+              if (!isNaN(+this[key])) {
+                res += +this[key];
+              }
+            }
+            console.log(`The total number of assessments = ${res}`);
+          }
+
+          calcScoreCount.apply(tabel);
+        },
+      };
+
+      tabel.caclAverageScore();
+    </script>
+  </body>
+</html>

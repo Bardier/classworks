@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      /* ЗАДАНИЕ:
+       * Есть объект с базовыми значениями размера и начинки бургера. Этот объект мы считаем статическим
+       * не изменяем ничего из того что в нем содержится, только пользуемся тем что внутри
+       * */
+      const constantValues = {
+        SIZE_SMALL: {
+          price: 15,
+          cal: 250,
+        },
+
+        SIZE_LARGE: {
+          price: 25,
+          cal: 340,
+        },
+
+        STUFFING_CHEASE: {
+          price: 4,
+          cal: 25,
+        },
+
+        STUFFING_SALAD: {
+          price: 5,
+          cal: 5,
+        },
+
+        STUFFING_BEEF: {
+          price: 10,
+          cal: 50,
+        },
+      };
+
+      function CountBurger(size, stuffing) {
+        this.size = size;
+        this.stuffing = stuffing;
+
+        this.getPrice = () => {
+          return this.size.price + this.stuffing.price;
+        };
+        this.getCalories = () => {
+          return this.size.cal + this.stuffing.cal;
+        };
+      }
+
+      const countBurger1 = new CountBurger(
+        constantValues.SIZE_SMALL,
+        constantValues.STUFFING_BEEF
+      );
+      console.log("Price 1 =", countBurger1.getPrice());
+      console.log("Callories 1 =", countBurger1.getCalories());
+
+      const countBurger2 = new CountBurger(
+        constantValues.SIZE_LARGE,
+        constantValues.STUFFING_SALAD
+      );
+      console.log("Price 2 =", countBurger2.getPrice());
+      console.log("Callories 2 =", countBurger2.getCalories());
+
+      /* НУЖНО
+       * Написать функцию конструктор бургера, которая принимает два аргумента - размер и начинку бургера.
+       * Для удобства считаем что оба эти аргумента 100% будут переданы строками в которых написано одно из названий свойств объекта constantValues.
+       * У итогового объекта должны быть:
+       *   1 - поля size и stuffing
+       *   2 - метод getPrice(), который создает в объекте бургера свойство price и вычисляет стоимость бургера, основываясь на введенных в функцию конструктор аргументах и значениях в объекте constantValues
+       *   3 - метод getCalories(), который создает в объекте бургера свойство calories и вычисляет калорийность бургера, основываясь на введенных в функцию конструктор аргументах и значениях в объекте constantValues
+       * */
+    </script>
+  </body>
+</html>

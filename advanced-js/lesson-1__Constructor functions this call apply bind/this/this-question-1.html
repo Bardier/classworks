@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      /**
+       * Задание 1.
+       *
+       * Объяснить поведение.
+       */
+
+      const user = {
+        name: "Walter",
+        getName() {
+          return this.name;
+        },
+      };
+
+      // тут мы передаем тело функции и так как мы не добовляем ей контекст к примеру через bind(user),
+      // то в функции getName у нас this === window, а в нем у нас нету свойства name
+      // и поэтому при вызове getName нам ничего в консоль и не возвращается
+      // а правильный вариант был бы такой:
+      // const getName = user.getName.bind(user);
+
+      const getName = user.getName;
+
+      console.log(getName());
+    </script>
+  </body>
+</html>

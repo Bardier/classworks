@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--
+Создайте функцию-конструтор объекта `stopwatch` согласно описанию:
+ 1. Свойства объекта:
+ - `time`: время;
+ - `container`: ссылка на DOM-элемент, внутри которого нужно выводить время.
+ 2. Методы объекта:
+ - `start`, `stop`, `reset`, работающие с его свойствами.
+ - `setTime` и `getTime`.
+ `setTime` будет получать новое значение времени в качестве аргумента, и проверять,
+ является ли оно положительным целым числом. Если да - то свойству `time` будет присвоено значение аргумента,
+ переданного в метод `setTime` и метод вернет ответ объект вида:
+ 
+ ```
+	 {
+	 	status: "success",
+	 }
+ ```
+ 
+ Если же аргумент не удовлетворяет критериям, то возвращать объект вида:
+ ```
+	 {
+		 status: "error",
+		 message: "argument must be positive integer"
+	 }
+ ```
+ Метод же `getTime` будет просто возвращать значение свойства `time` для использования его вне методов объектов.
+ -->
+
+    <p id="time"></p>
+    <button id="start-time">Start</button>
+    <button id="stop-time">Stop</button>
+    <button id="reset-time">Reset</button>
+
+    <script>
+      function Stopwatch({ time, container }) {
+        this.initialTime = time;
+        this.time = time;
+        this.container = document.querySelector(container);
+
+        this.timerId = null;
+
+        this.start = () => {
+          this.timerId = setInterval(() => {
+            this.container.textContent = this.getTime();
+            this.setTime(this.time + 1);
+          }, 1000);
+        };
+        this.stop = () => {
+          clearInterval(this.timerId);
+        };
+        this.reset = () => {
+          clearInterval(this.timerId);
+          this.setTime(this.initialTime);
+          this.container.textContent = this.getTime();
+        };
+
+        this.setTime = (num) => {
+          if (!Number.isInteger(+num) || +num <= 0) {
+            return {
+              status: "error",
+              message: "argument must be positive integer",
+            };
+          } else {
+            this.time = num;
+            return {
+              status: "success",
+            };
+          }
+        };
+        this.getTime = () => {
+          return this.time;
+        };
+      }
+
+      const stopwatch = new Stopwatch({ time: 10, container: "#time" });
+
+      document.querySelector("#time").textContent = stopwatch.getTime();
+
+      document
+        .querySelector("#start-time")
+        .addEventListener("click", stopwatch.start);
+
+      document
+        .querySelector("#stop-time")
+        .addEventListener("click", stopwatch.stop);
+
+      document
+        .querySelector("#reset-time")
+        .addEventListener("click", stopwatch.reset);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul class="heroes-list">
+      <li class="hero">Бэнг Серебряный Кулак</li>
+      <li class="hero">Тацумаки Смерч Ужаса</li>
+      <li class="hero">Атомный самурай</li>
+      <li class="hero">Ребенок-Император</li>
+      <li class="hero">Бофои Стальной Рыцарь</li>
+      <li class="hero">Милая Маска</li>
+      <li class="hero">Вегетерианец в майке</li>
+      <li class="hero">Молния Гэнджи</li>
+      <li class="hero">Тяжелый танк Фундоши</li>
+      <li class="hero">Синее пламя</li>
+      <li class="hero">Стингер</li>
+    </ul>
+
+    <script>
+      /**
+       * Напишите функцию getHeroes, которая принимает в себя 2 аргумента: css-селектор
+       * количество пунктов из полученного на его основе NodeList, которые нужно вернуть.
+       * Помните про изучаемую тему
+       * */
+      const heroes = getHeroes(".hero", 5); // вернет первые 5 li.
+      console.log(heroes);
+
+      // ? Я наверное не понял задание, потомучто не пойму для чего тут может пригодиться call()
+
+      function getHeroes(target, num) {
+        const heroes = document.querySelectorAll(target);
+        let res = [];
+        for (let i = 0; i < num; i++) {
+          res.push(heroes[i]);
+        }
+        return res;
+      }
+    </script>
+  </body>
+</html>

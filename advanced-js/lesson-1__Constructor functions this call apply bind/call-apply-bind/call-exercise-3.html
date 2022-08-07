@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      .war-machine-list {
+        display: flex;
+        justify-content: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .war-machine {
+        text-decoration: none;
+        padding: 10px 15px;
+        color: red;
+        border: 1px solid red;
+        border-radius: 5px;
+        margin: 0 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <menu id="menu" class="war-machine-list">
+      <a href="#" data-number="1" class="war-machine">Отравленный кинжал</a>
+      <a href="#" data-number="2" class="war-machine">Золотой бог</a>
+      <a href="#" data-number="3" class="war-machine">Гарганто</a>
+      <a href="#" data-number="4" class="war-machine">Фламберг</a>
+      <a href="#" data-number="5" class="war-machine">Рыцарь</a>
+      <a href="#" data-number="6" class="war-machine">Золар Ауперкаль</a>
+      <a href="#" data-number="7" class="war-machine">Казнь</a>
+      <a href="#" data-number="8" class="war-machine">Вечный голод</a>
+      <a href="#" data-number="9" class="war-machine">Покровитель</a>
+    </menu>
+
+    <p id="war-machine-number"></p>
+    <script>
+      /**
+       * При клике на пункт меню выводите его номер в p с id
+       * "war-machine-number". Напишите для этого отдельную функцию
+       * getElementNumber без создания промежуточного массива elementsArr.
+       * */
+
+      //  ! Походу как и с предыдущим заданием не понял куда тут лепить call()
+
+      function getElementNumber() {
+        let res = "Нужно жмакнуть на одну из кнопок.";
+        document.querySelector("#menu").addEventListener("click", (e) => {
+          e.preventDefault();
+          if (e.target.classList.contains("war-machine")) {
+            res = `Выбрана машинка под номером ${e.target.getAttribute(
+              "data-number"
+            )}`;
+          }
+          document.querySelector("#war-machine-number").textContent = res;
+        });
+
+        document.querySelector("#war-machine-number").textContent = res;
+      }
+      getElementNumber();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--    Напишите функцию-конструктор, создающую объект,
+реализующий такой функционал: у нас на странице есть вопрос.
+Пр первом клике на него под ним открывается ответ на вопрос.
+При повтором - ответ прячется. Разметку вы найдете в файле.-->
+
+    <a href="" class="question">Девиз дома Баратеонов</a>
+
+    <div id="root"></div>
+
+    <script>
+      function TogleAnswer(answerContainer, questionContainer) {
+        this.answerContainer = document.querySelector(answerContainer);
+        this.questionContainer = document.querySelector(questionContainer);
+        this.isAnswerHide = true;
+
+        this.showHideAnswer = () => {
+          this.questionContainer.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (this.isAnswerHide) {
+              this.answerContainer.textContent = "Ответ на вопрос!";
+              this.isAnswerHide = !this.isAnswerHide;
+            } else {
+              this.answerContainer.textContent = "";
+              this.isAnswerHide = !this.isAnswerHide;
+            }
+          });
+        };
+      }
+
+      const togleAnswer = new TogleAnswer("#root", "a");
+      togleAnswer.showHideAnswer();
+    </script>
+  </body>
+</html>
